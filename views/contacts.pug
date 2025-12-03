@@ -1,13 +1,23 @@
 doctype html
-html 
-    head 
-        title= `${title}`
-        meta(name="viewport" content="width=device-width, initial-scale=1")
-        link(rel="stylesheet", href="/css/style.css")
-    body    
-        h1 Contacts
-        .cards 
-            each contact in data
-                .card 
-                    h2.card__name #{contact.properties.firstname}  #{contact.properties.lastname}
-                    p.card__email #{contact.properties.email}
+html
+  head
+    title= title
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="/css/style.css")
+
+  body
+    .wrapper
+      h1 Contacts
+
+      .cards
+        table
+          tr
+            th Name
+            th Email
+            th Favorite Book
+
+          each contact in data
+            tr
+              td.card__name #{contact.properties.firstname} #{contact.properties.lastname}
+              td.card__email #{contact.properties.email}
+              td.fav_book #{contact.properties.favorite_book || '—'}
